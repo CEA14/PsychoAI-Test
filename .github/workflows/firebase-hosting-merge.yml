@@ -14,8 +14,7 @@ jobs:
       - name: Run npm ci and build
         run: |
           npm ci
-          export PATH=$PATH:./node_modules/.bin
-          react-scripts build
+          npx --no-install react-scripts build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
