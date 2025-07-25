@@ -16,10 +16,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Or your preferred Node.js version, e.g., '16', '20'
-     - name: Run yarn install and build
+          node-version: '20' # Ensure this is exactly '20' (as a string)
+      - name: Run yarn install and build
         run: |
           yarn install --frozen-lockfile
+          # This line below must be indented by 2 spaces relative to 'run: |'
           node ./node_modules/react-scripts/bin/react-scripts.js build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
