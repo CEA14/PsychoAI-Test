@@ -20,7 +20,8 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm ci
-          npm run build
+          # Explicitly ensure node_modules/.bin is in PATH for the build command
+          PATH=$(npm bin):$PATH npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
