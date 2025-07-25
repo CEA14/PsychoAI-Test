@@ -17,10 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Or your preferred Node.js version, e.g., '16', '20'
-      - name: Run yarn install and build
+     - name: Run yarn install and build
         run: |
           yarn install --frozen-lockfile
-          yarn build
+          node ./node_modules/react-scripts/bin/react-scripts.js build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
