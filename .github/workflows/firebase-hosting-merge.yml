@@ -17,10 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Ensure this is exactly '20' (as a string)
-      - name: Run npm ci and build
+   - name: Clean install dependencies and build
         run: |
-          npm ci
-          npm run build
+          # Remove any existing node_modules and package-lock.json to ensure a clean install
+          rm -rf node_modules
+          rm -f package-lock.json
+          npm install # Use npm install for a fresh setup, which might be more robust here
+          npm run build # Standard npm build command
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
